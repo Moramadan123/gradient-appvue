@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Document</title>
+    <style>
+      .results,
+      .syntax {
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: static;
+        padding: 20px;
+      }
+      .grad-box {
+        padding: 40px;
+        border-bottom: 1px solid #ccc;
+        color: #fff;
+        font-size: 24px;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 0px;
+        width: 500px;
+        z-index: 10;
+      }
+      form {
+        background-color: #ddd;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        top: 100px;
+        position: absolute;
+      }
+      form input {
+        margin-bottom: 20px;
+        padding: 9px;
+        border-radius: 6px;
+      }
+      form button {
+        border-radius: 6px;
+        width: fit-content;
+        display: flex;
+        justify-self: center;
+        padding: 10px;
+        margin: auto;
+        cursor: pointer;
+      }
+      form button:hover {
+        background-color: #752727;
+        color: white;
+      }
+      .form-group input {
+        padding: 10px 20px;
+        border-radius: 10px;
+        height: 34px;
+      }
+      .task-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+      }
+      .task-box .delete {
+        background-color: red;
+        padding: 4px;
+        cursor: pointer;
+      }
+      .disabled {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="elzero-app">
+      <div
+        class="grad-box"
+        :style="{ backgroundImage: 'linear-gradient(' + direction + ', ' + colorone + ', ' + colortwo + ')' }"
+      >
+        gradient reviewer
+      </div>
+      <form action="">
+        <div class="form-group">
+          <label for="direction">Directions</label>
+          <input type="text" id="direction" v-model="direction" />
+        </div>
+        <div class="form-group">
+          <label for="colorone">Color Stop One</label>
+          <input type="text" id="colorone" v-model="colorone" />
+        </div>
+        <div class="form-group">
+          <label for="colortwo">Color Stop Two</label>
+          <input type="text" id="colortwo" v-model="colortwo" />
+        </div>
+        <div class="results">
+          <span>CSS code:</span>
+          background-image:linear-gradient({{ direction }}, {{ colorone }}, {{
+          colortwo }})
+        </div>
+        <div class="syntax">
+          <span>Syntax:</span>
+          background-image:linear-gradient(direction, color-stop1, color-stop2)
+        </div>
+      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#elzero-app",
+        data: {
+          direction: "to right",
+          colorone: "#FF0000",
+          colortwo: "#FFFF00",
+        },
+      });
+    </script>
+  </body>
+</html>
